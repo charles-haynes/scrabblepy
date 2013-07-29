@@ -1,11 +1,10 @@
-from StringIO import StringIO
-import unittest
+from unittest import TestCase, TestLoader, TextTestRunner
 import score
 
 __author__ = 'chaynes'
 
 
-class TestScore(unittest.TestCase):
+class TestScore(TestCase):
     def test_score(self):
         self.assertEqual(score.score("abcdefghijklmnopqrstuvwxyz"), 137)
 
@@ -28,5 +27,5 @@ class TestScore(unittest.TestCase):
         self.assertEqual(score.score("a(a)aaaa"), 5)
 
 
-suite = unittest.TestLoader().loadTestsFromTestCase(TestScore)
-unittest.TextTestRunner(verbosity=2).run(suite)
+suite = TestLoader().loadTestsFromTestCase(TestScore)
+TextTestRunner(verbosity=2).run(suite)

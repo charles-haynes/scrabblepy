@@ -1,17 +1,13 @@
-from unittest import TestCase
-from scrabble import words_for_rack, representation
+from unittest import TestCase, TestLoader, TextTestRunner
+from scrabble import words_for_rack
+from tests.test_score import TestScore
 
 __author__ = 'chaynes'
 
 
 class TestWords_for_rack(TestCase):
     def setUp(self):
-        self.word_list = {representation("spot"): ["spot", "pots", "stop", "tops"],
-                          representation("stops"): ["stops", "spots"],
-                          representation("pot"): ["pot"],
-                          representation("ports"): ["ports"],
-                          representation("sporty"): ["sporty"],
-                          representation("stroppy"): ["stroppy"]}
+        self.word_list = ["spot", "pots", "stop", "tops", "stops", "spots", "pot", "ports", "sporty", "stroppy"]
 
     def test_words_for_rack(self):
         word_list_expected = ["spot", "pots", "stop", "tops", "stops", "spots", "pot"]
@@ -27,3 +23,7 @@ class TestWords_for_rack(TestCase):
         word_list_expected = ["spot", "pots", "stop", "tops", "stops", "spots", "pot", "ports", "sporty"]
 
         self.assertItemsEqual(words_for_rack("spots..", self.word_list), word_list_expected)
+
+
+suite = TestLoader().loadTestsFromTestCase(TestWords_for_rack)
+TextTestRunner(verbosity=2).run(suite)

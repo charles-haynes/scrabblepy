@@ -1,12 +1,12 @@
 #! /usr/bin/env python
+from ScrabbleWordRepresentation import ScrabbleWordRepresentation
 
 __author__ = 'chaynes'
 
-from ScrabbleWordRepresentation import ScrabbleWordRepresentation
 import sys
 
 def representation(word):
-    return ScrabbleWordRepresentation.fromString(word)
+    return ScrabbleWordRepresentation(word)
 
 def words_for_rack(rack, word_list):
     rack_bag = representation(rack)
