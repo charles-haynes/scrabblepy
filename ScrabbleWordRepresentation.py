@@ -1,8 +1,21 @@
 __author__ = 'chaynes'
 
 class ScrabbleWordRepresentation():
-    def __init__(self, iterable):
-        self.iterable = sorted(iterable)
+    def __init__(self, iterable, blanks=0):
+        self.iterable = iterable
+        self.blanks=blanks
+
+    @classmethod
+    def FromWord(cls, word, blanks=0):
+        return cls(sorted(word), blanks)
+
+    def contains(self, other):
+        blanks = self.blanks
+        for s in other.sub(self):
+            blanks -= 1
+            if blanks < 0:
+                return False
+        return True
 
     def __sub__(self, other):
         return ScrabbleWordRepresentation(self.sub(other))
@@ -20,15 +33,6 @@ class ScrabbleWordRepresentation():
             yield s
             s = si.next()
 
-    def __len__(self):
-        return sum(1 for _ in self.iterable)
-
     def __eq__(self, other):
-        return self.iterable == other.iterable
+        return all(x==y for (x,y) in zip(self.iterable, other.iterable))
 
-    def __hash__(self):
-        try:
-            return self._hash
-        except AttributeError:
-            self._hash = hash(tuple(self.iterable))
-            return self._hash

@@ -5,17 +5,16 @@ __author__ = 'chaynes'
 
 import sys
 
-def representation(word):
-    return ScrabbleWordRepresentation(word)
+def representation(word, blanks=0):
+    return ScrabbleWordRepresentation.FromWord(word, blanks)
 
 def words_for_rack(rack, word_list):
-    rack_bag = representation(rack)
+    rack_bag = representation(rack, rack.count("."))
     blanks = rack.count('.')
     for word in word_list:
         word = word.rstrip("\r\n")
         word_bag = representation(word)
-        blanks_needed = len(word_bag - rack_bag)
-        if blanks_needed <= blanks:
+        if rack_bag.contains(word_bag):
             yield word
 
 def main():
