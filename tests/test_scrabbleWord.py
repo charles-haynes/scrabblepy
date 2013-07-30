@@ -46,6 +46,15 @@ class TestScrabbleWord(TestCase):
         self.assertEqual(ScrabbleWord.FromWord("abcde") - ScrabbleWord.FromWord("eca"),
                          ScrabbleWord.FromWord("db"))
 
+    def test_equal_ignores_order(self):
+        self.assertTrue(ScrabbleWord.FromWord("sport") == ScrabbleWord.FromWord("ports"))
+
+    def test_not_equal_same_length(self):
+        self.assertTrue(ScrabbleWord.FromWord("spork") != ScrabbleWord.FromWord("ports"))
+
+    def test_not_equal_different_lengths(self):
+        self.assertTrue(ScrabbleWord.FromWord("spork") != ScrabbleWord.FromWord("spor"))
+
 
 suite = TestLoader().loadTestsFromTestCase(TestScrabbleWord)
 TextTestRunner(verbosity=2).run(suite)
