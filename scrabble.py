@@ -1,19 +1,15 @@
 #! /usr/bin/env python
-from ScrabbleWordRepresentation import ScrabbleWordRepresentation
+from ScrabbleWord import ScrabbleWord
 
 __author__ = 'chaynes'
 
 import sys
 
-def representation(word, blanks=0):
-    return ScrabbleWordRepresentation.FromWord(word, blanks)
-
 def words_for_rack(rack, word_list):
-    rack_bag = representation(rack, rack.count("."))
-    blanks = rack.count('.')
+    rack_bag = ScrabbleWord.FromWord(rack, rack.count("."))
     for word in word_list:
         word = word.rstrip("\r\n")
-        word_bag = representation(word)
+        word_bag = ScrabbleWord.FromWord(word)
         if rack_bag.contains(word_bag):
             yield word
 

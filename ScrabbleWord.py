@@ -1,6 +1,6 @@
 __author__ = 'chaynes'
 
-class ScrabbleWordRepresentation():
+class ScrabbleWord():
     def __init__(self, iterable, blanks=0):
         self.iterable = iterable
         self.blanks=blanks
@@ -18,7 +18,7 @@ class ScrabbleWordRepresentation():
         return True
 
     def __sub__(self, other):
-        return ScrabbleWordRepresentation(self.sub(other))
+        return ScrabbleWord(self.sub(other))
 
     def sub(self, other):
         si = iter(self.iterable)
