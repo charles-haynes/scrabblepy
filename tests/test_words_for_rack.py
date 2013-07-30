@@ -1,6 +1,5 @@
 from unittest import TestCase, TestLoader, TextTestRunner
 from scrabble import words_for_rack
-from tests.test_score import TestScore
 
 __author__ = 'chaynes'
 

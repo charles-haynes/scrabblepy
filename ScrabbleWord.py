@@ -1,9 +1,10 @@
 __author__ = 'chaynes'
 
+
 class ScrabbleWord():
     def __init__(self, iterable, blanks=0):
         self.iterable = iterable
-        self.blanks=blanks
+        self.blanks = blanks
 
     @classmethod
     def FromWord(cls, word, blanks=0):
@@ -11,7 +12,7 @@ class ScrabbleWord():
 
     def contains(self, other):
         blanks = self.blanks
-        for s in other.sub(self):
+        for _ in other.sub(self):
             blanks -= 1
             if blanks < 0:
                 return False
@@ -34,5 +35,5 @@ class ScrabbleWord():
             s = si.next()
 
     def __eq__(self, other):
-        return all(x==y for (x,y) in zip(self.iterable, other.iterable))
+        return all(x == y for (x, y) in zip(self.iterable, other.iterable))
 
