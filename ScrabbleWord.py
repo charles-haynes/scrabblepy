@@ -2,26 +2,17 @@ __author__ = 'chaynes'
 
 
 class ScrabbleWord():
-    def __init__(self, iterable, blanks=0):
+    def __init__(self, iterable):
         self.iterable = iterable
-        self.blanks = blanks
 
     @classmethod
-    def FromWord(cls, word, blanks=0):
-        return cls(sorted(word), blanks)
+    def FromWord(cls, word):
+        return cls(sorted(word))
 
     def contains(self, other):
-        blanks = self.blanks
-        for _ in other.sub(self):
-            blanks -= 1
-            if blanks < 0:
-                return False
-        return True
+        return not any(other._sub(self))
 
-    def __sub__(self, other):
-        return ScrabbleWord(self.sub(other))
-
-    def sub(self, other):
+    def _sub(self, other):
         si = iter(self.iterable)
         s = si.next()
         for o in other.iterable:

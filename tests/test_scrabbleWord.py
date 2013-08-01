@@ -34,18 +34,6 @@ class TestScrabbleWord(TestCase):
         self.assertFalse(
             ScrabbleWord.FromWord("ace").contains(ScrabbleWord.FromWord("aef")))
 
-    def test_blank_contains_one_letter_different(self):
-        self.assertTrue(
-            ScrabbleWord.FromWord("ace", 1).contains(ScrabbleWord.FromWord("aef")))
-
-    def test_blank_does_not_contains_two_letters_different(self):
-        self.assertFalse(
-            ScrabbleWord.FromWord("ace", 1).contains(ScrabbleWord.FromWord("abef")))
-
-    def test___sub__(self):
-        self.assertEqual(ScrabbleWord.FromWord("abcde") - ScrabbleWord.FromWord("eca"),
-                         ScrabbleWord.FromWord("db"))
-
     def test_equal_ignores_order(self):
         self.assertTrue(ScrabbleWord.FromWord("sport") == ScrabbleWord.FromWord("ports"))
 

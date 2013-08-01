@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-from ScrabbleWord import ScrabbleWord
+from ScrabbleRack import ScrabbleRack, ScrabbleWord
 
 __author__ = 'chaynes'
 
@@ -7,7 +7,7 @@ import sys
 
 
 def words_for_rack(rack, word_list):
-    rack_bag = ScrabbleWord.FromWord(rack, rack.count("."))
+    rack_bag = ScrabbleRack.RackFromWord(rack, rack.count("."))
     for word in word_list:
         word_bag = ScrabbleWord.FromWord(word)
         if rack_bag.contains(word_bag):
