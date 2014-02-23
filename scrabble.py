@@ -1,9 +1,9 @@
 #! /usr/bin/env python
+import sys
+
 from ScrabbleRack import ScrabbleRack, ScrabbleWord
 
 __author__ = 'chaynes'
-
-import sys
 
 
 def words_for_rack(rack, word_list):
