@@ -1,0 +1,25 @@
+<html ng-app='scrabbleApp'>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="scrabbleController.js"></script>
+</head>
+  <body>
+    <div ng-controller='ScrabbleController'>
+      <label for="rack">Rack</label>
+      <input id="rack" ng-model='rack.text'>
+      <label for="board">Board</label>
+      <input id="board" ng-model='board.text'>
+      <label for="regexp">Regexp</label>
+      <input id="regexp" ng-model='regexp.text'>
+      <p>Rack is {{rack.text}}</p>
+      <p>Board is {{board.text}}</p>
+      <p>Regexp is {{regexp.text}}</p>
+      <p>Words</p>
+      <table>
+        <tr ng-repeat='word in words'>
+          <td>{{word}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
